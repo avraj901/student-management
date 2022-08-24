@@ -40,18 +40,23 @@ public class StudentServiceImpl implements IStudentService {
 
 	@Override
 	public Student updateStudent(Student student, Integer id) {
-		Student existingStudent = studentRepository.findById(id).orElseThrow(
-				() -> new ResourceNotFoundException("Student", "id", id));
+		Student existingStudent = studentRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Student", "id", id));
 		existingStudent.setFirstName(student.getFirstName());
 		existingStudent.setLastName(student.getLastName());
 		existingStudent.setClassName(student.getClassName());
 		existingStudent.setSubject(student.getSubject());
 		existingStudent.setDateOfBirth(student.getDateOfBirth());
-		
-		//We will update the value and then save the updated value
-		
+
+		// We will update the value and then save the updated value
+
 		studentRepository.save(existingStudent);
 		return existingStudent;
+	}
+
+	@Override
+	public List<Student> getStudentByClass(Integer id) {
+		return studentRepository.findByClassName(id);
 	}
 
 }

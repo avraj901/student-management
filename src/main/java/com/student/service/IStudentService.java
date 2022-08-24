@@ -8,12 +8,16 @@ import com.student.entity.Student;
 public interface IStudentService {
 
 	Integer saveStudent(Student student);
-	
+
 	public List<Student> getAllStudent();
-	
+
 	Optional<Student> getStudent(Integer id);
-	
+
 	public void deleteStudent(Integer id);
-	
+
 	Student updateStudent(Student student, Integer id);
+	
+	List<Student> getStudentByClass(Integer id);
+	
+	
 }

@@ -34,23 +34,31 @@ public class StudentController {
 	public List<Student> getAllStudent() {
 		return studentService.getAllStudent();
 	}
+
 	@GetMapping("/student/{id}")
-	public Optional<Student> getStudentById(@PathVariable Integer id){
+	public Optional<Student> getStudentById(@PathVariable Integer id) {
 		return studentService.getStudent(id);
 	}
+
 	@DeleteMapping("/student/{id}")
-	public ResponseEntity<Student> deleteEmployeeById(@PathVariable Integer id){
+	public ResponseEntity<Student> deleteEmployeeById(@PathVariable Integer id) {
 		ResponseEntity<Student> responseEntity = new ResponseEntity<>(HttpStatus.OK);
 		try {
 			studentService.deleteStudent(id);
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			responseEntity = new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 		return responseEntity;
 	}
+
 	@PutMapping("/update/{id}")
-	public ResponseEntity<Student> updateStudent(@PathVariable("id") Integer id, @RequestBody Student student){
+	public ResponseEntity<Student> updateStudent(@PathVariable("id") Integer id, @RequestBody Student student) {
 		return new ResponseEntity<Student>(studentService.updateStudent(student, id), HttpStatus.OK);
+	}
+
+	@GetMapping("getbyclass/{id}")
+	public List<Student> getStudentByClassName(@PathVariable Integer id) {
+		return studentService.getStudentByClass(id);
 	}
 }
