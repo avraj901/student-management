@@ -15,7 +15,22 @@ public class Student {
 	private String lastName;
 	private Integer className;
 	private String subject;
-	private String DateOfBirth;
+	private String dateOfBirth;
+	
+	public Student() {
+		super();
+	}
+
+	public Student(Integer id, String firstName, String lastName, Integer className, String subject,
+			String dateOfBirth) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.className = className;
+		this.subject = subject;
+		this.dateOfBirth = dateOfBirth;
+	}
 
 	public Integer getId() {
 		return id;
@@ -58,26 +73,12 @@ public class Student {
 	}
 
 	public String getDateOfBirth() {
-		return DateOfBirth;
+		return dateOfBirth;
 	}
 
 	public void setDateOfBirth(String dateOfBirth) {
-		DateOfBirth = dateOfBirth;
+		this.dateOfBirth = dateOfBirth;
 	}
 
-	public Student(Integer id, String firstName, String lastName, Integer className, String subject,
-			String dateOfBirth) {
-		super();
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.className = className;
-		this.subject = subject;
-		DateOfBirth = dateOfBirth;
-	}
-
-	public Student() {
-		super();
-	}
 
 }
