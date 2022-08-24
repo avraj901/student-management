@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.student.entity.Student;
+import com.student.exception.ResourceNotFoundException;
 import com.student.repository.IstudentRepository;
 
 @Service
@@ -35,6 +36,22 @@ public class StudentServiceImpl implements IStudentService {
 	@Override
 	public void deleteStudent(Integer id) {
 		studentRepository.deleteById(id);
+	}
+
+	@Override
+	public Student updateStudent(Student student, Integer id) {
+		Student existingStudent = studentRepository.findById(id).orElseThrow(
+				() -> new ResourceNotFoundException("Student", "id", id));
+		existingStudent.setFirstName(student.getFirstName());
+		existingStudent.setLastName(student.getLastName());
+		existingStudent.setClassName(student.getClassName());
+		existingStudent.setSubject(student.getSubject());
+		existingStudent.setDateOfBirth(student.getDateOfBirth());
+		
+		//We will update the value and then save the updated value
+		
+		studentRepository.save(existingStudent);
+		return existingStudent;
 	}
 
 }
