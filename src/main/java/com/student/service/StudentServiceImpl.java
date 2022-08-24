@@ -1,6 +1,7 @@
 package com.student.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,11 @@ public class StudentServiceImpl implements IStudentService {
 	public List<Student> getAllStudent() {
 		List<Student> student = studentRepository.findAll();
 		return student;
+	}
+
+	@Override
+	public Optional<Student> getStudent(Integer id) {
+		return studentRepository.findById(id);
 	}
 
 }
