@@ -36,15 +36,15 @@ public class StudentController {
 	}
 
 	@GetMapping("/student/{id}")
-	public Optional<Student> getStudentById(@PathVariable Integer id) {
-		return studentService.getStudent(id);
+	public Optional<Student> getStudentById(@PathVariable Integer studentId) {
+		return studentService.getStudentById(studentId);
 	}
 
 	@DeleteMapping("/student/{id}")
-	public ResponseEntity<Student> deleteEmployeeById(@PathVariable Integer id) {
+	public ResponseEntity<Student> deleteStudentById(@PathVariable Integer studentId) {
 		ResponseEntity<Student> responseEntity = new ResponseEntity<>(HttpStatus.OK);
 		try {
-			studentService.deleteStudent(id);
+			studentService.deleteStudent(studentId);
 		} catch (Exception e) {
 			e.printStackTrace();
 			responseEntity = new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -58,7 +58,7 @@ public class StudentController {
 	}
 
 	@GetMapping("getbyclass/{id}")
-	public List<Student> getStudentByClassName(@PathVariable Integer id) {
-		return studentService.getStudentByClass(id);
+	public List<Student> getStudentByClassName(@PathVariable Integer studentId) {
+		return studentService.getStudentByClass(studentId);
 	}
 }

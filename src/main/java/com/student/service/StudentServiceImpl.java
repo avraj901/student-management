@@ -29,13 +29,13 @@ public class StudentServiceImpl implements IStudentService {
 	}
 
 	@Override
-	public Optional<Student> getStudent(Integer id) {
-		return studentRepository.findById(id);
+	public Optional<Student> getStudentById(Integer studentId) {
+		return studentRepository.findById(studentId);
 	}
 
 	@Override
-	public void deleteStudent(Integer id) {
-		studentRepository.deleteById(id);
+	public void deleteStudent(Integer studentId) {
+		studentRepository.deleteById(studentId);
 	}
 
 	@Override
@@ -55,8 +55,8 @@ public class StudentServiceImpl implements IStudentService {
 	}
 
 	@Override
-	public List<Student> getStudentByClass(Integer id) {
-		return studentRepository.findByClassName(id);
+	public List<Student> getStudentByClass(Integer studentId) {
+		return studentRepository.findByClassName(studentId);
 	}
 
 }

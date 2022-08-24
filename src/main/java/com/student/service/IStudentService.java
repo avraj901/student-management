@@ -11,13 +11,13 @@ public interface IStudentService {
 
 	public List<Student> getAllStudent();
 
-	Optional<Student> getStudent(Integer id);
+	Optional<Student> getStudentById(Integer studentId);
 
-	public void deleteStudent(Integer id);
+	public void deleteStudent(Integer studentId);
 
 	Student updateStudent(Student student, Integer id);
 	
-	List<Student> getStudentByClass(Integer id);
+	List<Student> getStudentByClass(Integer studentId);
 	
 	
 }
